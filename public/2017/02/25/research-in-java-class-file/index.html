@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="yangdong,java,spring,python" />
+  <meta name="keywords" content="java,jvm," />
 
 
 
@@ -108,12 +108,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Arvin Alfod">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Preludejava class file ( produced by java compiler ,  whose naming format is *.class ) can be executed by Java Virtual Machine  ( also called JVM  ) .  For JVM is available for many platforms , java l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="research in java class file">
+<meta property="og:url" content="http://yoursite.com/2017/02/25/research-in-java-class-file/index.html">
 <meta property="og:site_name" content="Arvin Alfod">
+<meta property="og:description" content="Preludejava class file ( produced by java compiler ,  whose naming format is *.class ) can be executed by Java Virtual Machine  ( also called JVM  ) .  For JVM is available for many platforms , java l">
+<meta property="og:updated_time" content="2017-02-25T13:59:31.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Arvin Alfod">
+<meta name="twitter:title" content="research in java class file">
+<meta name="twitter:description" content="Preludejava class file ( produced by java compiler ,  whose naming format is *.class ) can be executed by Java Virtual Machine  ( also called JVM  ) .  For JVM is available for many platforms , java l">
 
 
 
@@ -131,7 +135,7 @@
   };
 </script>
 
-  <title> Arvin Alfod </title>
+  <title> research in java class file | Arvin Alfod </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -152,9 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,9 +253,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -273,10 +275,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/02/25/research-in-java-class-file/" itemprop="url">
-                  research in java class file
-                </a>
+                research in java class file
               
             
           </h1>
@@ -335,164 +334,82 @@
       
 
       
-        
-          
-          Preludejava class file ( produced by java compiler ,  whose naming format is *.class ) can be executed by Java Virtual Machine  ( also called JVM  ) .
-          ...
+        <h1 id="Prelude"><a href="#Prelude" class="headerlink" title="Prelude"></a>Prelude</h1><p>java class file ( produced by java compiler ,  whose naming format is *.class ) can be executed by <em>Java Virtual Machine</em>  ( also called <strong>JVM</strong>  ) .  For JVM is available for many platforms , java language obtain its precious features  <strong>Platforms Independent</strong> which means <strong>once write , run anywhere</strong>.<br>many java programmers can be curious about it , let’s share a journey of exploration !</p>
+<h1 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h1><ul>
+<li><p><strong>Magic  Number</strong><br>Only java class file’s first 4 bytes code is｜ “0xCAFEBABE” , which give JVM a fast way to verify a file’s format  .</p>
+</li>
+<li><p><strong>Version Number</strong><br>The next 4 bytes indicate the java version of this class file , in which the first two bytes represented minor version name , while  the other two bytes represented major version .</p>
+</li>
+<li><p><strong>Constant pool</strong><br>This section can be broken into two parts ,  pool count in first 2 bytes and the rest  is constant pool table , which store Strings , numbers  and references to classes and methods .</p>
+</li>
+</ul>
+<h1 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h1><ul>
+<li><strong>Start</strong></li>
+<li><p><em>javac  $SourceFilePath</em></p>
+<pre><code>javac will compile java code to class file .
+</code></pre></li>
+<li><p><em>javap -verbose $ClassPath</em>      </p>
+<pre><code>javap  will disassembles a class file to  human-readable  format , we will analyze the result file to understand how class file describe  the java source code
+</code></pre></li>
+<li><p><strong>Simplest Function</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">package com.alfod;</div><div class="line"></div><div class="line">public class JavaBiteCode &#123;</div><div class="line"></div><div class="line">    public void fun() &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">minor version: 0</div><div class="line">major version: 52</div><div class="line">flags: ACC_PUBLIC, ACC_SUPER</div><div class="line">Constant pool:</div><div class="line"> #1 = Methodref          #3.#14         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V</div><div class="line"> #2 = Class              #15            // com/alfod/JavaBiteCode</div><div class="line"> #3 = Class              #16            // java/lang/Object</div><div class="line"> #4 = Utf8               &lt;init&gt;</div><div class="line"> #5 = Utf8               ()V</div><div class="line"> #6 = Utf8               Code</div><div class="line"> #7 = Utf8               LineNumberTable</div><div class="line"> #8 = Utf8               LocalVariableTable</div><div class="line"> #9 = Utf8               this</div><div class="line">#10 = Utf8               Lcom/alfod/JavaBiteCode;</div><div class="line">#11 = Utf8               fun</div><div class="line">#12 = Utf8               SourceFile</div><div class="line">#13 = Utf8               JavaBiteCode.java</div><div class="line">#14 = NameAndType        #4:#5          // &quot;&lt;init&gt;&quot;:()V</div><div class="line">#15 = Utf8               com/alfod/JavaBiteCode</div><div class="line">#16 = Utf8               java/lang/Object</div><div class="line">&#123;</div><div class="line">public com.alfod.JavaBiteCode();</div><div class="line">  descriptor: ()V</div><div class="line">  flags: ACC_PUBLIC</div><div class="line">  Code:</div><div class="line">    stack=1, locals=1, args_size=1</div><div class="line">       0: aload_0</div><div class="line">       1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</div><div class="line">       4: return</div><div class="line">    LineNumberTable:</div><div class="line">      line 3: 0</div><div class="line">    LocalVariableTable:</div><div class="line">      Start  Length  Slot  Name   Signature</div><div class="line">          0       5     0  this   Lcom/alfod/JavaBiteCode;</div><div class="line"></div><div class="line">public void fun();</div><div class="line">  descriptor: ()V</div><div class="line">  flags: ACC_PUBLIC</div><div class="line">  Code:</div><div class="line">    stack=0, locals=1, args_size=1</div><div class="line">       0: return</div><div class="line">    LineNumberTable:</div><div class="line">      line 6: 0</div><div class="line">    LocalVariableTable:</div><div class="line">      Start  Length  Slot  Name   Signature</div><div class="line">          0       1     0  this   Lcom/alfod/JavaBiteCode;</div><div class="line">&#125;</div><div class="line">SourceFile: &quot;JavaBiteCode.java&quot;</div></pre></td></tr></table></figure>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/25/research-in-java-class-file/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/spring-mvc-interceptor/" itemprop="url">
-                  HandlerInterceptorAdapter
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T23:08:36+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/java/" rel="tag">#java</a>
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/jvm/" rel="tag">#jvm</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          preludeAs we all know, interceptor in spring-mvc is very useful to address various needs,one need is How to mark the request log more compact.
-In our 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/16/spring-mvc-interceptor/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/16/spring-mvc-interceptor/" rel="next" title="HandlerInterceptorAdapter">
+                <i class="fa fa-chevron-left"></i> HandlerInterceptorAdapter
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -500,6 +417,10 @@ In our
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -519,8 +440,17 @@ In our
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avator.jpg"
@@ -608,6 +538,17 @@ In our
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prelude"><span class="nav-number">1.</span> <span class="nav-text">Prelude</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Knowledge"><span class="nav-number">2.</span> <span class="nav-text">Basic Knowledge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Examples"><span class="nav-number">3.</span> <span class="nav-text">Examples</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -700,6 +641,10 @@ In our
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

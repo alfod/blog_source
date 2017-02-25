@@ -123,7 +123,7 @@ social:
   Facebook: https://www.facebook.com/arvin.alfod
   GitHub: https://github.com/alfod
   Twitter: https://twitter.com/arvinalfod
-  知乎: http://www.zhihu.com/people/arvinalfod
+  Quora: https://www.quora.com/profile/Arvin-Alfod
 
 # Social Links Icons
 # Icon Mapping:
@@ -136,7 +136,6 @@ social_icons:
   # KeyMapsToSocalItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
   Twitter: twitter
-  Weibo: weibo
 
 
 # Sidebar Avatar

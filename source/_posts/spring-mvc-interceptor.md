@@ -1,6 +1,8 @@
 ---
 title: HandlerInterceptorAdapter
-tags: [Spring, Spring-Mvc, Java, Web]
+tags:
+- spring-mvc
+- java
 categories: [Technology]
 ---
 

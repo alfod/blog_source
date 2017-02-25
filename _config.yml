@@ -70,5 +70,5 @@ theme: NexT
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/arvinalfod/arvinalfod.github.io.git
+  repository: https://github.com/alfod/alfod.github.io.git
   branch: master
